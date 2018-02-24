@@ -1,7 +1,7 @@
-require "Action"
-require "FiniteStateTransition"
+-- require "FiniteAction"
+-- require "FiniteStateTransition"
 
-FiniteState = {}
+local FiniteState = {}
 
 function FiniteState.new(name,action)
     local state = {}
@@ -11,3 +11,5 @@ function FiniteState.new(name,action)
 
     return state
 end
+
+return FiniteState

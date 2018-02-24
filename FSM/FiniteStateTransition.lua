@@ -1,4 +1,4 @@
-FiniteStateTransition = {}
+local FiniteStateTransition = {}
 
 function FiniteStateTransition.new(toStateName,evaluator)
     local transition = {}
@@ -9,3 +9,5 @@ function FiniteStateTransition.new(toStateName,evaluator)
 
     return transition
 end
+
+return FiniteStateTransition

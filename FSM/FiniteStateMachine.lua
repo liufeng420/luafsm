@@ -1,8 +1,8 @@
-require "Action"
-require "FiniteState"
-require "FiniteStateTransition"
+local FiniteAction = require("FiniteAction")
+local FiniteState = require("FiniteState")
+local FiniteStateTransition = require("FiniteStateTransition")
 
-FiniteStateMachine = {}
+local FiniteStateMachine = {}
 
 function FiniteStateMachine.new(userData)
     local fsm = {}
@@ -88,9 +88,9 @@ function FiniteStateMachine.Update(self,deltaTimeInMillis)
     if self.currentState_ then
         local status = self:GetCurrentStateStatus()
 
-        if status == Action.Status.RUNNING then
+        if status == FiniteAction.Status.RUNNING then
             self.currentState_.action_:Update(deltaTimeInMillis)
-        elseif status == Action.Status.TERMINATED then
+        elseif status == FiniteAction.Status.TERMINATED then
             local toStateName = EvaluateTransitions(self,self.transition_[self.currentState_.name_])
 
             if self.states_[toStateName] ~= nil then
@@ -101,3 +101,5 @@ function FiniteStateMachine.Update(self,deltaTimeInMillis)
         end
     end
 end
+
+return FiniteStateMachine
